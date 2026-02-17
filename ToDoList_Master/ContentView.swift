@@ -25,7 +25,6 @@ struct ContentView: View {
 
                         VStack(alignment: .leading) {
                             Text(todo.title)
-                                .strikethrough(todo.isDone)
                                 .font(.headline)
 
                             Text(todo.date.formatted())

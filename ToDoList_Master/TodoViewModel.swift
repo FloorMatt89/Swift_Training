@@ -12,7 +12,6 @@ struct Todo: Identifiable{
     var id = UUID()
     var title: String
     var date = Date()
-    var isDone: Bool = false
 }
 
 @MainActor
@@ -27,9 +26,4 @@ final class TodoViewModel: ObservableObject {
     func delete(at offsets: IndexSet) {
         todos.remove(atOffsets: offsets)
     }
-    
-    func toggle(_ todo: Todo) {
-            guard let index = todos.firstIndex(where: { $0.id == todo.id }) else { return }
-            todos[index].isDone.toggle()
-        }
 }

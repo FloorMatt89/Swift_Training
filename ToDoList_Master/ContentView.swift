@@ -13,7 +13,6 @@ struct ContentView: View {
 
     var body: some View {
             VStack {
-
                 Text("My To Do List")
                     .font(.largeTitle)
                     .bold()
@@ -22,27 +21,18 @@ struct ContentView: View {
 
                 List {
                     ForEach(vm.todos) { todo in
-                        HStack {
-                            Image(systemName: todo.isDone ? "checkmark.circle.fill" : "circle")
-                                .foregroundColor(todo.isDone ? .green : .gray)
+                
 
-                            VStack(alignment: .leading) {
-                                Text(todo.title)
-                                    .strikethrough(todo.isDone)
-                                    .font(.headline)
+                        VStack(alignment: .leading) {
+                            Text(todo.title)
+                                .font(.headline)
 
-                                Text(todo.date.formatted())
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                            }
-
-                            Spacer()
+                            Text(todo.date.formatted())
+                                .font(.caption)
+                                .foregroundColor(.gray)
                         }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            vm.toggle(todo)
-                        }
-                    }
+  
+                    }  
                     .onDelete(perform: vm.delete)
                 }
 
